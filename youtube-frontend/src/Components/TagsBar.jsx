@@ -14,7 +14,7 @@ const TagsBar = () => {
         <button
           key={index}
           onClick={() => setActiveTag(tag)}
-          className={`px-4 py-1 rounded-full text-sm font-medium border ${
+          className={`px-4 py-1 rounded-full text-sm font-medium cursor-pointer border ${
             activeTag === tag
               ? 'bg-black text-white border-black'
               : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'

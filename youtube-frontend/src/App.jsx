@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Navbar from './Components/Navbar'
 import Home from './Pages/Home'
 import Sidebar from './Components/SideNavbar'
+import { Route, Routes } from 'react-router-dom'
+import About from './Pages/About'
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -22,7 +24,10 @@ const App = () => {
             showSidebar ? 'ml-60' : 'ml-0'
           }`}
         >
-          <Home />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/' element={<About/>} />
+          </Routes>
         </div>
       </div>
     </div>
