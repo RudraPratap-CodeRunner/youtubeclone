@@ -4,6 +4,7 @@ import Home from './Pages/Home'
 import Sidebar from './Components/SideNavbar'
 import { Route, Routes } from 'react-router-dom'
 import About from './Pages/About'
+import Video from './Pages/Video'
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -26,6 +27,7 @@ const App = () => {
         >
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/video/:id' element={<Video />} />
             <Route path='/' element={<About/>} />
           </Routes>
         </div>
