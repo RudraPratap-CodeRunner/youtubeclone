@@ -3,6 +3,7 @@ import VideoCard from '../Components/VideoCard'
 
 const sampleVideos = [
   {
+    id:1,
     thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg',
     title: 'Never Gonna Give You Up - Rick Astley',
     channelName: 'RickAstleyVEVO',
@@ -11,6 +12,7 @@ const sampleVideos = [
     uploaded: '13 years ago',
   },
   {
+    id:2,
     thumbnail: 'https://i.ytimg.com/vi/3JZ_D3ELwOQ/mqdefault.jpg',
     title: 'Shape of You - Ed Sheeran (Official Video)',
     channelName: 'Ed Sheeran',
@@ -19,6 +21,7 @@ const sampleVideos = [
     uploaded: '6 years ago',
   },
    {
+    id:3,
     thumbnail: 'https://i.ytimg.com/vi/3JZ_D3ELwOQ/mqdefault.jpg',
     title: 'Shape of You - Ed Sheeran (Official Video)',
     channelName: 'Ed Sheeran',
@@ -26,46 +29,7 @@ const sampleVideos = [
     views: '6.1B views',
     uploaded: '6 years ago',
   },
-   {
-    thumbnail: 'https://i.ytimg.com/vi/3JZ_D3ELwOQ/mqdefault.jpg',
-    title: 'Shape of You - Ed Sheeran (Official Video)',
-    channelName: 'Ed Sheeran',
-    channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu9EvLlWAK7PfOTpXbPoXFaTRzHx8RMxeF3eX04l=s88-c-k-c0x00ffffff-no-rj',
-    views: '6.1B views',
-    uploaded: '6 years ago',
-  },
-   {
-    thumbnail: 'https://i.ytimg.com/vi/3JZ_D3ELwOQ/mqdefault.jpg',
-    title: 'Shape of You - Ed Sheeran (Official Video)',
-    channelName: 'Ed Sheeran',
-    channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu9EvLlWAK7PfOTpXbPoXFaTRzHx8RMxeF3eX04l=s88-c-k-c0x00ffffff-no-rj',
-    views: '6.1B views',
-    uploaded: '6 years ago',
-  },
-   {
-    thumbnail: 'https://i.ytimg.com/vi/3JZ_D3ELwOQ/mqdefault.jpg',
-    title: 'Shape of You - Ed Sheeran (Official Video)',
-    channelName: 'Ed Sheeran',
-    channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu9EvLlWAK7PfOTpXbPoXFaTRzHx8RMxeF3eX04l=s88-c-k-c0x00ffffff-no-rj',
-    views: '6.1B views',
-    uploaded: '6 years ago',
-  },
-   {
-    thumbnail: 'https://i.ytimg.com/vi/3JZ_D3ELwOQ/mqdefault.jpg',
-    title: 'Shape of You - Ed Sheeran (Official Video)',
-    channelName: 'Ed Sheeran',
-    channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu9EvLlWAK7PfOTpXbPoXFaTRzHx8RMxeF3eX04l=s88-c-k-c0x00ffffff-no-rj',
-    views: '6.1B views',
-    uploaded: '6 years ago',
-  },
-   {
-    thumbnail: 'https://i.ytimg.com/vi/3JZ_D3ELwOQ/mqdefault.jpg',
-    title: 'Shape of You - Ed Sheeran (Official Video)',
-    channelName: 'Ed Sheeran',
-    channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu9EvLlWAK7PfOTpXbPoXFaTRzHx8RMxeF3eX04l=s88-c-k-c0x00ffffff-no-rj',
-    views: '6.1B views',
-    uploaded: '6 years ago',
-  },
+   
   
 
   // Add more videos here
