@@ -3,7 +3,7 @@ import { IoMdNotificationsOutline } from 'react-icons/io';
 import { CgProfile } from 'react-icons/cg';
 import React, { useState } from 'react';
 
-const Navbar = () => {
+const Navbar = ({toggleSidebar}) => {
   // Simulated user object
   const [user, setUser] = useState(null); // null means not logged in
   const [showPopup, setShowPopup] = useState(false);
@@ -25,7 +25,7 @@ const Navbar = () => {
     <div className="flex items-center justify-between px-4 py-2 bg-white shadow fixed top-0 left-0 right-0 z-50">
       {/* Left Section */}
       <div className="flex items-center gap-4">
-        <FaBars size={22} className="cursor-pointer" />
+        <FaBars onClick={toggleSidebar} size={22} className="cursor-pointer" />
         <img
           src="https://www.logo.wine/a/logo/YouTube/YouTube-Logo.wine.svg"
           alt="YouTube Logo"
