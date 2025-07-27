@@ -4,7 +4,9 @@ import Home from './Pages/Home'
 import Sidebar from './Components/SideNavbar'
 import { Route, Routes } from 'react-router-dom'
 import About from './Pages/About'
-import Video from './Pages/Video'
+import VideoPage from './Pages/VideoPage'
+import ChannelPage from './Pages/ChannelPage'
+import VideoUpload from './Pages/VideoUpload'
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -27,7 +29,9 @@ const App = () => {
         >
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/watch/:id' element={<Video />} />
+            <Route path='/watch/:id' element={<VideoPage />} />
+            <Route path='/channel/:channelId' element={<ChannelPage />} />
+            <Route path='/:id/upload' element={<VideoUpload />} />
             <Route path='/' element={<About/>} />
           </Routes>
         </div>

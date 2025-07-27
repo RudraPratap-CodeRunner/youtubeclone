@@ -17,6 +17,7 @@ import {
   MdOutlineFaceRetouchingNatural,
 } from 'react-icons/md';
 import { SiYoutubeshorts } from 'react-icons/si';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const navItems = [
@@ -55,7 +56,9 @@ const Sidebar = () => {
             className="flex cursor-pointer items-center gap-4 p-2 rounded-lg hover:bg-gray-100 w-full text-left"
           >
             {item.icon}
-            <span>{item.label}</span>
+            <Link to='/'>
+              <span>{item.label}</span>
+            </Link>
           </button>
         ))}
       </div>
