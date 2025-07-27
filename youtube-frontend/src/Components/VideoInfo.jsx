@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import sampleVideos from '../data/videoData';
+import axios from 'axios';
 
 const VideoInfo = () => {
-  const { id } = useParams();
-  
-  const video = sampleVideos.find((vid) => vid.id == id);
- 
-
-  // Fallback if video not found
-  if (!video) return <div>Video not found</div>;
-
+  const { videoId } = useParams();
+  const [videos, setVideos] = useState([]);
   const [likes, setLikes] = useState(1200);
   const [dislikes, setDislikes] = useState(40);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/videos');
+        setVideos(res.data);
+      } catch (error) {
+        console.error('Error fetching videos:', error.message);
+      }
+    };
+    fetchVideos();
+  }, []);
+
+  const video = videos.find((vid) => String(vid.videoId) === String(videoId));
+  
+
+  if (!videos.length) return <div>Loading...</div>;
+  if (!video) return <div>Video not found</div>;
 
   return (
     <div className="mb-4">

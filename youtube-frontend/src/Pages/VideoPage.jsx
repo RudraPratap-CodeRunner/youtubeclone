@@ -7,20 +7,21 @@ import CommentSection from '../Components/CommentSection';
 import SuggestedVideos from '../Components/SuggestedVideos';
 
 const VideoPage = () => {
-  const { id } = useParams();
+  const { videoId } = useParams();
+ 
 
   // Scroll to top on video change
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
+  }, [videoId]);
 
   return (
     <div className="flex flex-col md:flex-row p-4 pt-20">
       <div className="md:w-2/3">
-        <VideoPlayer videoId={id} />
+        <VideoPlayer videoId={videoId} />
         <VideoInfo />
-        <ChannelInfo id={id} />
-        <CommentSection />
+        <ChannelInfo videoId={videoId} />
+        <CommentSection videoId='6885be2e16a25bf24ee9a05f' />
       </div>
       <div className="md:w-1/3 md:pl-4 mt-4 md:mt-0">
         <SuggestedVideos />

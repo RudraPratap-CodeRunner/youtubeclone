@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const VideoCard = ({ video }) => {
   return (
-    <Link to={`/watch/${video.id}`} className="block">
+    <Link to={`/watch/${video.videoId}`} className="block">
       <img src={video.thumbnail} alt={video.title} className="rounded-lg w-full" />
       <div className="flex mt-2">
         <img src={video.channelAvatar} alt="Channel" className="w-10 h-10 rounded-full mr-2" />

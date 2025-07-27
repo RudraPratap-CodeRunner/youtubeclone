@@ -29,7 +29,7 @@ const App = () => {
         >
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/watch/:id' element={<VideoPage />} />
+            <Route path='/watch/:videoId' element={<VideoPage />} />
             <Route path='/channel/:channelId' element={<ChannelPage />} />
             <Route path='/:id/upload' element={<VideoUpload />} />
             <Route path='/' element={<About/>} />

@@ -1,4 +1,11 @@
-const sampleVideos = [
+import express from 'express';
+import Video from '../models/Video.js';
+
+const router = express.Router();
+
+// Insert sample videos (run once)
+router.post('/seed', async (req, res) => {
+  const sampleVideos =[
   {
     videoId: '1',
     youtubeId: 'tVgW8kU1lZA',
@@ -29,7 +36,20 @@ const sampleVideos = [
     views: '200M views',
     uploaded: '12 years ago',
   },
-]
+];
 
+  try {
+    await Video.insertMany(sampleVideos);
+    res.status(201).json({ message: 'Sample videos inserted' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
-export default sampleVideos;
+// Get all videos
+router.get('/', async (req, res) => {
+  const videos = await Video.find();
+  res.json(videos);
+});
+
+export default router;

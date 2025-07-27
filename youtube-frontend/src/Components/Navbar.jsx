@@ -1,7 +1,7 @@
 import { FaBars, FaSearch, FaMicrophone, FaVideo } from 'react-icons/fa';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import { CgProfile } from 'react-icons/cg';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AuthModal from './AuthModel.jsx';
 import { Link } from 'react-router-dom';
 
@@ -9,15 +9,44 @@ const Navbar = ({ toggleSidebar }) => {
   const [user, setUser] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const popupRef = useRef(null);
 
   const handleLogin = (userData) => {
     setUser(userData);
+    setShowAuthModal(false);
   };
 
+  // const handleSignOut = () => {
+  //   setUser(null);
+  //   setShowPopup(false);
+  // };
+
   const handleSignOut = () => {
-    setUser(null);
-    setShowPopup(false);
-  };
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  setUser(null);
+  setShowPopup(false);
+};
+
+
+  // Close popup if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (popupRef.current && !popupRef.current.contains(e.target)) {
+        setShowPopup(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    setUser(JSON.parse(storedUser));
+  }
+}, []);
+
 
   return (
     <>
@@ -51,18 +80,21 @@ const Navbar = ({ toggleSidebar }) => {
 
         {/* Right Section */}
         <div className="flex items-center gap-4 relative">
-          <Link to='/1/upload'>
+          <Link to="/1/upload">
             <FaVideo className="cursor-pointer" size={20} />
           </Link>
           <IoMdNotificationsOutline className="cursor-pointer" size={22} />
 
           {user ? (
-            <div
-              className="relative"
-              onMouseEnter={() => setShowPopup(true)}
-              onMouseLeave={() => setShowPopup(false)}
-            >
-              <CgProfile className="cursor-pointer" size={28} />
+            <div className="relative" ref={popupRef}>
+              <button
+                onClick={() => setShowPopup(!showPopup)}
+                className="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200"
+              >
+                <CgProfile size={22} />
+                <span className="font-medium">{user.name}</span>
+              </button>
+
               {showPopup && (
                 <div className="absolute right-0 mt-2 w-56 bg-white shadow-lg rounded-md p-4 text-sm z-50">
                   <p className="font-medium">{user.name}</p>
