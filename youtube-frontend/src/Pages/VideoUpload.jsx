@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// Replace this with your local logo path if needed
+
 const YOUTUBE_LOGO_URL = 'https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg';
 
 const VideoUpload = () => {

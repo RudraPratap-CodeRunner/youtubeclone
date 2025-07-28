@@ -1,4 +1,3 @@
-// Navbar.jsx
 import { FaBars, FaSearch, FaMicrophone, FaVideo } from 'react-icons/fa';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import { CgProfile } from 'react-icons/cg';

@@ -3,7 +3,6 @@ import Navbar from './Components/Navbar'
 import Home from './Pages/Home'
 import Sidebar from './Components/SideNavbar'
 import { Route, Routes } from 'react-router-dom'
-import About from './Pages/About'
 import VideoPage from './Pages/VideoPage'
 import ChannelPage from './Pages/ChannelPage'
 import VideoUpload from './Pages/VideoUpload'
@@ -34,8 +33,7 @@ const App = () => {
             <Route path='/watch/:videoId' element={<VideoPage />} />
             <Route path='/channel/:channelId/:thumbnail' element={<ChannelPage />} />
             <Route path='/:id/upload' element={<VideoUpload />} />
-            <Route path='/' element={<About/>} />
-          </Routes>
+           </Routes>
         </div>
       </div>
     </div>

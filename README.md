@@ -2,6 +2,8 @@
 
 Note: Project is not copied. Project is running properly at my end.
 
+Note: Run first backend as backend is connected to frontend. Both backend and frontend should run at terminal simaltaneously.
+
 Video Link : https://www.loom.com/share/3bff7448a8d8493981d2dedeb8243cce
 (please paste the link for recorded video of feature explaination)
 GitHub Link : https://github.com/RudraPratap-CodeRunner/youtubeclone

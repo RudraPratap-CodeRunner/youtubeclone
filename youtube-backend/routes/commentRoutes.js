@@ -3,7 +3,7 @@ import Comment from '../models/Comment.js';
 
 const router = express.Router();
 
-// 🔍 GET all comments for a video
+
 // GET /api/comments/:videoId
 router.get('/:videoId', async (req, res) => {
   try {
@@ -14,7 +14,7 @@ router.get('/:videoId', async (req, res) => {
   }
 });
 
-// ➕ POST a new comment for a video
+
 // POST /api/comments/:videoId
 router.post('/:videoId', async (req, res) => {
   const { userName, text } = req.body;
@@ -30,7 +30,7 @@ router.post('/:videoId', async (req, res) => {
   }
 });
 
-// ✏️ PUT (edit) a comment
+
 // PUT /api/comments/:id
 router.put('/:id', async (req, res) => {
   try {
@@ -46,7 +46,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// ❌ DELETE a comment
+
 // DELETE /api/comments/:id
 router.delete('/:id', async (req, res) => {
   try {
