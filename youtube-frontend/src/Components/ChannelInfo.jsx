@@ -1,13 +1,9 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
-const ChannelInfo = ({id}) => {
-  
-
-   const [videos, setVideos] = useState([]);
+const ChannelInfo = ({ videoId }) => {
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -18,20 +14,24 @@ const ChannelInfo = ({id}) => {
         console.error('Error fetching videos:', error.message);
       }
     };
-
     fetchVideos();
   }, []);
+
+  const video = videos.find((v) => String(v.videoId) === String(videoId));
+
+  if (!video) return <div>Loading channel info...</div>;
+
   return (
     <div className="flex items-center justify-between border-y py-4 mb-4">
       <div className="flex items-center">
         <img
-          src={videos.thumbnail}
+          src={video.thumbnail}
           alt="Channel Avatar"
-          className="w-12 h-12 rounded-full mr-4"
+          className="w-12 h-12 rounded-full mr-4 object-cover"
         />
         <div>
-          <Link to={`/channel/${videos.channelName}`}>
-            <p className="font-semibold cursor-pointer">{videos.channelName}</p>
+          <Link to={`/channel/${video.channelName}/${encodeURIComponent(video.thumbnail)}`}>
+            <p className="font-semibold cursor-pointer">{video.channelName}</p>
           </Link>
           <p className="text-sm text-gray-500">2.5M subscribers</p>
         </div>

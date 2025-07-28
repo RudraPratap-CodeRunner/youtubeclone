@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Insert sample videos (run once)
 router.post('/seed', async (req, res) => {
-  const sampleVideos =[
+  const sampleVideos =  [
   {
     videoId: '1',
     youtubeId: 'tVgW8kU1lZA',
@@ -15,6 +15,9 @@ router.post('/seed', async (req, res) => {
     channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu9evVE4=s88-c-k-c0x00ffffff-no-rj',
     views: '120M views',
     uploaded: '10 years ago',
+    category: 'Music',
+    likes: 1800000,
+    dislikes: 12000,
   },
   {
     videoId: '2',
@@ -25,6 +28,9 @@ router.post('/seed', async (req, res) => {
     channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu_VwKTz=s88-c-k-c0x00ffffff-no-rj',
     views: '95M views',
     uploaded: '8 years ago',
+    category: 'Music',
+    likes: 1500000,
+    dislikes: 8000,
   },
   {
     videoId: '3',
@@ -35,6 +41,9 @@ router.post('/seed', async (req, res) => {
     channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu-L2H=s88-c-k-c0x00ffffff-no-rj',
     views: '200M views',
     uploaded: '12 years ago',
+    category: 'Music',
+    likes: 2200000,
+    dislikes: 10000,
   },
 ];
 
@@ -51,5 +60,36 @@ router.get('/', async (req, res) => {
   const videos = await Video.find();
   res.json(videos);
 });
+
+// Increment like count
+router.put('/:videoId/like', async (req, res) => {
+  try {
+    const updatedVideo = await Video.findOneAndUpdate(
+      { videoId: req.params.videoId },
+      { $inc: { likes: 1 } },
+      { new: true }
+    );
+    if (!updatedVideo) return res.status(404).json({ message: 'Video not found' });
+    res.json(updatedVideo);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Increment dislike count
+router.put('/:videoId/dislike', async (req, res) => {
+  try {
+    const updatedVideo = await Video.findOneAndUpdate(
+      { videoId: req.params.videoId },
+      { $inc: { dislikes: 1 } },
+      { new: true }
+    );
+    if (!updatedVideo) return res.status(404).json({ message: 'Video not found' });
+    res.json(updatedVideo);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 
 export default router;

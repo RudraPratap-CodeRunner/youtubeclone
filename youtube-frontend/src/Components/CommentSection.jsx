@@ -24,14 +24,13 @@ const CommentSection = ({ videoId }) => {
   if (!newComment.trim()) return;
 
   try {
-    const res = await axios.post('http://localhost:5000/api/comments', {
-      user: 'Rudra',  // Simulated logged-in user
+    const res = await axios.post(`http://localhost:5000/api/comments/${videoId}`, {
+      userName: 'Rudra',  // Make sure this matches the backend field name
       text: newComment.trim(),
-      videoId: videoId, // Must be valid MongoDB ObjectId string
     });
 
     if (res.data && res.data._id) {
-      setComments((prev) => [...prev, res.data]);
+      setComments((prev) => [res.data, ...prev]); // prepend for newest first
       setNewComment('');
     } else {
       console.warn('Unexpected response:', res.data);
@@ -40,6 +39,7 @@ const CommentSection = ({ videoId }) => {
     console.error('Failed to add comment:', err.response?.data || err.message);
   }
 };
+
 
 
   // Delete a comment

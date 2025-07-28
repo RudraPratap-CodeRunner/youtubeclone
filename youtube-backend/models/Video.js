@@ -9,6 +9,9 @@ const videoSchema = new mongoose.Schema({
   channelAvatar: String,
   views: String,
   uploaded: String,
+  category:String,
+  likes:Number,
+  dislikes:Number,
 });
 
 export default mongoose.model('Video', videoSchema);

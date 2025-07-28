@@ -1,35 +1,37 @@
+// Navbar.jsx
 import { FaBars, FaSearch, FaMicrophone, FaVideo } from 'react-icons/fa';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import { CgProfile } from 'react-icons/cg';
 import React, { useState, useEffect, useRef } from 'react';
 import AuthModal from './AuthModel.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Navbar = ({ toggleSidebar }) => {
+const Navbar = ({ toggleSidebar, setSearchQuery }) => {
   const [user, setUser] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [input, setInput] = useState('');
   const popupRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleLogin = (userData) => {
     setUser(userData);
     setShowAuthModal(false);
   };
 
-  // const handleSignOut = () => {
-  //   setUser(null);
-  //   setShowPopup(false);
-  // };
-
   const handleSignOut = () => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
-  setUser(null);
-  setShowPopup(false);
-};
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+    setShowPopup(false);
+  };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchQuery(input);
+    navigate('/');
+  };
 
-  // Close popup if clicked outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (popupRef.current && !popupRef.current.contains(e.target)) {
@@ -41,12 +43,11 @@ const Navbar = ({ toggleSidebar }) => {
   }, []);
 
   useEffect(() => {
-  const storedUser = localStorage.getItem('user');
-  if (storedUser) {
-    setUser(JSON.parse(storedUser));
-  }
-}, []);
-
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   return (
     <>
@@ -61,22 +62,24 @@ const Navbar = ({ toggleSidebar }) => {
           />
         </div>
 
-        {/* Center Section */}
-        <div className="flex items-center gap-2 flex-1 max-w-2xl mx-4">
+        {/* Center Section - Search */}
+        <form onSubmit={handleSearch} className="flex items-center gap-2 flex-1 max-w-2xl mx-4">
           <div className="flex flex-1 border border-gray-300 rounded-full overflow-hidden">
             <input
               type="text"
               placeholder="Search"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
               className="w-full px-4 py-1 outline-none"
             />
-            <button className="bg-gray-100 px-4">
+            <button type="submit" className="bg-gray-100 px-4">
               <FaSearch />
             </button>
           </div>
-          <button className="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
+          <button type="button" className="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
             <FaMicrophone />
           </button>
-        </div>
+        </form>
 
         {/* Right Section */}
         <div className="flex items-center gap-4 relative">
@@ -89,22 +92,35 @@ const Navbar = ({ toggleSidebar }) => {
             <div className="relative" ref={popupRef}>
               <button
                 onClick={() => setShowPopup(!showPopup)}
-                className="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200"
+                className="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200 cursor-pointer transition"
               >
                 <CgProfile size={22} />
                 <span className="font-medium">{user.name}</span>
               </button>
 
               {showPopup && (
-                <div className="absolute right-0 mt-2 w-56 bg-white shadow-lg rounded-md p-4 text-sm z-50">
-                  <p className="font-medium">{user.name}</p>
-                  <p className="text-gray-500 mb-2">{user.email}</p>
-                  <button
-                    onClick={handleSignOut}
-                    className="w-full text-left text-red-600 hover:underline"
-                  >
-                    Sign Out
-                  </button>
+                <div className="absolute right-0 mt-2 w-60 bg-white shadow-xl rounded-lg border border-gray-200 z-50">
+                  <div className="p-4 border-b">
+                    <p className="font-semibold text-gray-800">{user.name}</p>
+                    <p className="text-sm text-gray-500">{user.email}</p>
+                  </div>
+                  <ul className="text-sm">
+                    <li
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer transition"
+                      onClick={() => {
+                        navigate(`/channel/${user._id}`);
+                        setShowPopup(false);
+                      }}
+                    >
+                      Your Channel
+                    </li>
+                    <li
+                      className="px-4 py-2 hover:bg-gray-100 text-red-600 font-medium cursor-pointer transition"
+                      onClick={handleSignOut}
+                    >
+                      Sign Out
+                    </li>
+                  </ul>
                 </div>
               )}
             </div>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import VideoCard from '../Components/VideoCard';
 
-const HomePage = () => {
+const HomePage = ({ searchQuery, activeTag }) => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
@@ -19,11 +19,29 @@ const HomePage = () => {
     fetchVideos();
   }, []);
 
+  const filteredVideos = videos.filter((video) => {
+    const matchesSearch =
+      searchQuery.trim() !== '' &&
+      video.title?.toLowerCase().includes(searchQuery.toLowerCase());
+
+    const matchesTag =
+      activeTag !== 'All' &&
+      video.category?.toLowerCase() === activeTag.toLowerCase();
+
+    return matchesSearch || matchesTag || (searchQuery.trim() === '' && activeTag === 'All');
+  });
+
   return (
     <div className="pt-20 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-      {videos.map((video) => (
-        <VideoCard key={video._id} video={video} />
-      ))}
+      {filteredVideos.length > 0 ? (
+        filteredVideos.map((video) => (
+          <VideoCard key={video._id} video={video} />
+        ))
+      ) : (
+        <p className="text-lg col-span-full text-center text-gray-600">
+          No videos found for "{searchQuery}" or category "{activeTag}".
+        </p>
+      )}
     </div>
   );
 };

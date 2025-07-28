@@ -8,6 +8,9 @@ const sampleVideos = [
     channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu9evVE4=s88-c-k-c0x00ffffff-no-rj',
     views: '120M views',
     uploaded: '10 years ago',
+    category: 'Music',
+    likes: 1800000,
+    dislikes: 12000,
   },
   {
     videoId: '2',
@@ -18,6 +21,9 @@ const sampleVideos = [
     channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu_VwKTz=s88-c-k-c0x00ffffff-no-rj',
     views: '95M views',
     uploaded: '8 years ago',
+    category: 'Music',
+    likes: 1500000,
+    dislikes: 8000,
   },
   {
     videoId: '3',
@@ -28,8 +34,10 @@ const sampleVideos = [
     channelAvatar: 'https://yt3.ggpht.com/ytc/AMLnZu-L2H=s88-c-k-c0x00ffffff-no-rj',
     views: '200M views',
     uploaded: '12 years ago',
+    category: 'Music',
+    likes: 2200000,
+    dislikes: 10000,
   },
-]
-
+];
 
 export default sampleVideos;

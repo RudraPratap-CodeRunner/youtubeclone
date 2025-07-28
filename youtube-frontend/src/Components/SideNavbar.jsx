@@ -51,15 +51,17 @@ const Sidebar = () => {
       {/* Main */}
       <div className="flex flex-col gap-1">
         {navItems.map((item, i) => (
+           <Link to='/' key={i}>
           <button
             key={i}
             className="flex cursor-pointer items-center gap-4 p-2 rounded-lg hover:bg-gray-100 w-full text-left"
           >
             {item.icon}
-            <Link to='/'>
+           
               <span>{item.label}</span>
-            </Link>
+           
           </button>
+           </Link>
         ))}
       </div>
 

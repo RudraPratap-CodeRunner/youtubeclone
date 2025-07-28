@@ -10,12 +10,14 @@ import VideoUpload from './Pages/VideoUpload'
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  
 
   const toggleSidebar = () => setShowSidebar(prev => !prev);
 
   return (
     <div>
-      <Navbar toggleSidebar={toggleSidebar} />
+      <Navbar toggleSidebar={toggleSidebar} setSearchQuery={setSearchQuery} />
       
       <div className="flex">
         {/* Sidebar (conditionally rendered) */}
@@ -28,9 +30,9 @@ const App = () => {
           }`}
         >
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home searchQuery={searchQuery} />} />
             <Route path='/watch/:videoId' element={<VideoPage />} />
-            <Route path='/channel/:channelId' element={<ChannelPage />} />
+            <Route path='/channel/:channelId/:thumbnail' element={<ChannelPage />} />
             <Route path='/:id/upload' element={<VideoUpload />} />
             <Route path='/' element={<About/>} />
           </Routes>
