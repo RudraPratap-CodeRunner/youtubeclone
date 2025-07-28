@@ -10,6 +10,8 @@ const videoMap = {
   '7': 'xSVn79TZPqs',
   '8': 'XnIY_UDhXP8',
   '9': 'pR2NV_k49lg',
+  '10': 'orYf6VDtj_k',
+  '11': 'zZasH6qkn8M',
 };
 
 const VideoPlayer = ({ videoId }) => {

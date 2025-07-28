@@ -2,7 +2,7 @@ const sampleVideos = [
   {
     videoId: '1',
     thumbnail: 'https://i.ytimg.com/vi/BSJa1UytM8w/mqdefault.jpg',
-    title: 'Tum Mile - Emraan Hashmi | Romantic Bollywood Song',
+    title: 'Saiyaara Title Song | Romantic Bollywood Song',
     channelName: 'SonyMusicIndiaVEVO',
     views: '120M views',
     uploaded: '10 years ago',
@@ -14,7 +14,7 @@ const sampleVideos = [
   {
     videoId: '2',
     thumbnail: 'https://i.ytimg.com/vi/KUpwupYj_tY/mqdefault.jpg',
-    title: 'Raabta - Agent Vinod | Arijit Singh',
+    title: 'Tere Hawale | Arijit Singh',
     channelName: 'T-Series',
     views: '95M views',
     uploaded: '8 years ago',
@@ -26,7 +26,7 @@ const sampleVideos = [
   {
     videoId: '3',
     thumbnail: 'https://i.ytimg.com/vi/CtgD91Ev4NU/mqdefault.jpg',
-    title: 'Pee Loon - Once Upon A Time In Mumbaai',
+    title: 'Rozana | Shreya Ghoshal',
     channelName: 'SonyMusicIndia',
     views: '200M views',
     uploaded: '12 years ago',
@@ -97,7 +97,7 @@ const sampleVideos = [
   },
    {
     videoId: '9',
-    thumbnail: 'https://i.ytimg.com/vi/pR2NV_k49lgs/mqdefault.jpg',
+    thumbnail: 'https://i.ytimg.com/vi/9ZnrX3c_4_Q/mqdefault.jpg',
     title: 'कलम का बाहुबली - Manoj Muntashir',
     channelName: 'Zindagi With Richa',
     views: '1.5M views',
@@ -106,6 +106,30 @@ const sampleVideos = [
     likes: 82300,
     dislikes: 500,
     subscribers: 200000, 
+  },
+   {
+    videoId: '10',
+    thumbnail: 'https://i.ytimg.com/vi/orYf6VDtj_k/mqdefault.jpg',
+    title: 'Raataan Lambiyan - Lyric Video | Shershaah | Sidharth, Kiara | Tanishk B. | Jubin | Asees',
+    channelName: 'SonyMusicIndiaVEVO',
+    views: '300M views',
+    uploaded: '5 years ago',
+    category: 'Music',
+    likes: 1800000,
+    dislikes: 12000,
+    subscribers: 34000000, 
+  },
+  {
+    videoId: '11',
+    thumbnail: 'https://i.ytimg.com/vi/zZasH6qkn8M/mqdefault.jpg',
+    title: 'Teri Deewani - Kailash Kher | Official Video | Kailasa | Paresh | Naresh',
+    channelName: 'SonyMusicIndiaVEVO',
+    views: '300M views',
+    uploaded: '5 years ago',
+    category: 'Music',
+    likes: 1800000,
+    dislikes: 12000,
+    subscribers: 34000000, 
   },
 ];
 
