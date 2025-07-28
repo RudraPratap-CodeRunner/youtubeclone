@@ -6,11 +6,13 @@ GitHub Link : https://github.com/RudraPratap-CodeRunner/youtubeclone
 
 COMMAND TO RUN FRONTEND:
     1. cd youtube-frontend
-    2. npm run dev
+    2. npm install
+    3. npm run dev
 
 COMMAND TO RUN BACKEND:
     1. cd youtube-backend
-    2. npm run dev    
+    2. npm install
+    3. npm run dev    
 
 ## 🧱 Tech Stack:
 - **Frontend**: React, Tailwind CSS, React Router, Axios, react-icons
