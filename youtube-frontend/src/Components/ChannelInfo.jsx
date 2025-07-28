@@ -33,7 +33,7 @@ const ChannelInfo = ({ videoId }) => {
           <Link to={`/channel/${video.channelName}/${encodeURIComponent(video.thumbnail)}`}>
             <p className="font-semibold cursor-pointer">{video.channelName}</p>
           </Link>
-          <p className="text-sm text-gray-500">2.5M subscribers</p>
+          <p className="text-sm text-gray-500">{video.subscribers}</p>
         </div>
       </div>
       <button className="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700">

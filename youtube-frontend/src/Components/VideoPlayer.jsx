@@ -4,10 +4,16 @@ const videoMap = {
   '1': 'BSJa1UytM8w',
   '2': 'KUpwupYj_tY',
   '3': 'CtgD91Ev4NU',
+  '4': 'RGKi6LSPDLU',
+  '5': 'JvC7aA24m4Q',
+  '6': 'hnVOvvbQrwA',
+  '7': 'xSVn79TZPqs',
+  '8': 'XnIY_UDhXP8',
+  '9': 'pR2NV_k49lg',
 };
 
 const VideoPlayer = ({ videoId }) => {
-  const embedId = videoMap[videoId] || 'dQw4w9WgXcQ'; // fallback
+  const embedId = videoMap[videoId] || 'hnVOvvbQrwA'; // fallback
 
   return (
     <div className="w-full aspect-video mb-4">

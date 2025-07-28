@@ -12,6 +12,7 @@ const videoSchema = new mongoose.Schema({
   category:String,
   likes:Number,
   dislikes:Number,
+  subscribers:Number,
 });
 
 export default mongoose.model('Video', videoSchema);
