@@ -1,29 +1,30 @@
-import React from 'react';
-import VideoCard from '../Components/VideoCard'; // reuse existing component
+import React, { useEffect, useState } from 'react';
+import VideoCard from '../Components/VideoCard'; 
+import axios from 'axios';
 
-const dummyVideos = [
-  {
-    thumbnail: 'https://i.ytimg.com/vi/3JZ_D3ELwOQ/mqdefault.jpg',
-    title: 'Shape of You',
-    channelName: 'Ed Sheeran',
-    views: '6.1B views',
-    uploaded: '6 years ago',
-  },
-  {
-    thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg',
-    title: 'Never Gonna Give You Up',
-    channelName: 'Rick Astley',
-    views: '1.2B views',
-    uploaded: '13 years ago',
-  },
-];
+const ChannelVideoList = ({ activeTab, channelId }) => {
+  const [videos, setVideos] = useState([]);
 
-const ChannelVideoList = ({ activeTab }) => {
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/videos');
+        // Assuming each video object has a `channelId` field
+        const channelVideos = res.data.filter(video => video.channelName === channelId);
+        setVideos(channelVideos);
+      } catch (error) {
+        console.error('Error fetching videos:', error.message);
+      }
+    };
+
+    fetchVideos();
+  }, [channelId]); // Add dependency
+
   if (activeTab === 'Home' || activeTab === 'Videos') {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
-        {dummyVideos.map((video, index) => (
-          <VideoCard key={index} video={video} />
+        {videos.map((video, index) => (
+          <VideoCard key={video._id || index} video={video} />
         ))}
       </div>
     );

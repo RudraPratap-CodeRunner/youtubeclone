@@ -28,7 +28,7 @@ const SuggestedVideos = () => {
           <img src={video.thumbnail} className="w-40 rounded-lg" alt={video.title} />
           <div>
             <p className="font-semibold text-sm">{video.title}</p>
-            <p className="text-xs text-gray-500">{video.channel}</p>
+            <p className="text-xs text-gray-500">{video.channelName}</p>
             <p className="text-xs text-gray-400">{video.views}</p>
           </div>
         </Link>
